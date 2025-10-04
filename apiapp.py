@@ -32,16 +32,16 @@ def generate_video():
         "motion": 5,
         "seed": 0,
         "callback_url": "",
-        "time": 5
+        "time": 10
     }
 
     headers = {
-        "Content-Type": "application/json",
-        "x-api-key": AI_API_KEY
+        "Authorization": f"Bearer {AI_API_KEY}",
+        "Content-Type": "application/json"
     }
 
     # Step 1: Call AI Video API
-    resp = requests.post(f"{AI_BASE_URL}/generate", json=payload, headers=headers)
+    resp = requests.post(AI_BASE_URL, json=payload, headers=headers)
     if resp.status_code not in (200, 202):
         return jsonify({"error": "AI API call failed", "details": resp.text}), 500
 

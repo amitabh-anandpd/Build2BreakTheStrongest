@@ -23,3 +23,5 @@ if response.status_code == 200:
     print("🎥 URL:", data["video_url"])
 else:
     print("❌ Error:", response.text)
+
+# https://files.aivideoapi.com/20251004/1759578766055984063-video_raw_41d1aaa4be499fe1cc105b2d69741ef1_430849236075454473_cut.mp4

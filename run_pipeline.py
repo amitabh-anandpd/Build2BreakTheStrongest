@@ -54,4 +54,4 @@ if __name__ == "__main__":
     if not Path(pdf).exists():
         print(f"Place your source PDF at {pdf} and rerun.")
     else:
-        run(pdf_path=pdf, n_scenes=4, per_scene_duration=8)
+        run(pdf_path=pdf, n_scenes=5, per_scene_duration=4)

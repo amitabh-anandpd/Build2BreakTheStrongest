@@ -48,8 +48,11 @@ def make_doodle_from_keywords(scene_text, out_path, size=(1080,1920), bg=(255,25
     # place lines under circle
     start_y = cy + r + 30
     for i, ln in enumerate(lines):
-        w_text, h_text = draw.textsize(ln, font=font)
-        draw.text(((w - w_text)//2, start_y + i*20), ln, fill=(0,0,0), font=font)
+        bbox = draw.textbbox((0, 0), ln, font=font)
+        w_text = bbox[2] - bbox[0]
+        h_text = bbox[3] - bbox[1]
+        draw.text(((w - w_text)//2, start_y + i*20), ln, fill=(0, 0, 0), font=font)
+
     img.save(out_path)
     return out_path
 

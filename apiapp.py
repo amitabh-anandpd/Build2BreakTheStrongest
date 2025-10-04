@@ -6,7 +6,7 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 
-env_path = Path(__file__).resolve() / ".env"
+env_path = Path(__file__).resolve().parent / ".env"
 if env_path.exists():
     load_dotenv(env_path)
 

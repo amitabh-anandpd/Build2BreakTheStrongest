@@ -12,15 +12,34 @@ import time
 class ScriptWriter:
     """Generates YouTube Shorts scripts using Gemini API"""
     
-    def __init__(self, api_key: str):
+    def __init__(self, api_key: str, model_name: str = 'gemini-2.0-flash-exp'):
         """
         Initialize ScriptWriter with Gemini API
         
         Args:
             api_key: Google Gemini API key
+            model_name: Gemini model to use (default: gemini-2.0-flash-exp)
         """
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel('gemini-1.5-flash')
+        # Try to use the specified model, fallback to alternatives if not available
+        try:
+            self.model = genai.GenerativeModel(model_name)
+        except Exception:
+            # Fallback models to try
+            fallback_models = [
+                'gemini-2.0-flash-exp',
+                'gemini-1.5-flash-latest',
+                'gemini-1.5-flash-002',
+                'gemini-1.5-flash',
+                'gemini-pro'
+            ]
+            for fallback in fallback_models:
+                try:
+                    self.model = genai.GenerativeModel(fallback)
+                    print(f"Using model: {fallback}")
+                    break
+                except Exception:
+                    continue
         
     def generate_script(self, content_data: Dict, max_duration: int = 60) -> Dict:
         """

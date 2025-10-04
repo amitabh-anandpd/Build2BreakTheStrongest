@@ -2,14 +2,15 @@
 import requests
 import os
 from dotenv import load_dotenv
+from pathlib import Path
 
-env_path = ".env"
+env_path = Path(__file__).resolve() / ".env"
 if env_path.exists():
     load_dotenv(env_path)
 API_URL = os.getenv("API_URL")
 API_URL_LOCAL = os.getenv("API_URL_LOCAL")
 
-prompt_text = "masterpiece, cinematic, man smoking cigarette looking outside window, moving around"
+prompt_text = "doodle video, "
 
 response = requests.post(
     API_URL_LOCAL,

@@ -1,0 +1,27 @@
+# PDF to YouTube Shorts - Requirements
+
+# Core dependencies
+PyPDF2==3.0.1
+Pillow==10.1.0
+numpy==1.24.3
+
+# Google Gemini API
+google-generativeai==0.3.1
+
+# Text-to-Speech
+gTTS==2.4.0
+
+# Optional: Enhanced TTS (uncomment if needed)
+# pyttsx3==2.90
+# edge-tts==6.1.9
+
+# Optional: Stable Diffusion (if using local SD)
+# diffusers==0.25.0
+# torch==2.1.0
+# transformers==4.36.0
+
+# System requirements (install separately):
+# - FFmpeg (required for video processing)
+#   Ubuntu/Debian: sudo apt-get install ffmpeg
+#   macOS: brew install ffmpeg
+#   Windows: Download from ffmpeg.org

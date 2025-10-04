@@ -24,8 +24,8 @@ class ScriptWriter:
         # Try to use the specified model, fallback to alternatives if not available
         try:
             self.model = genai.GenerativeModel(model_name)
-        except Exception:
-            # Fallback models to try
+        except Exception as e:
+            print(e)
             fallback_models = [
                 'gemini-2.0-flash-exp',
                 'gemini-1.5-flash-latest',

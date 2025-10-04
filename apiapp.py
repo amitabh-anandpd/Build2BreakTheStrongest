@@ -3,11 +3,17 @@ from flask import Flask, request, jsonify
 import requests
 import time
 import os
+from dotenv import load_dotenv
+from pathlib import Path
+
+env_path = Path(__file__).resolve() / ".env"
+if env_path.exists():
+    load_dotenv(env_path)
 
 app = Flask(__name__)
 
-AI_API_KEY = os.getenv("AI_API_KEY", "YOUR_AIVIDEOAPI_KEY")  # put your key in env var or replace here
-AI_BASE_URL = "https://api.aivideoapi.com"  # main base URL
+AI_API_KEY = os.getenv("AI_API_KEY")
+AI_BASE_URL = os.getenv("AI_BASE_URL")
 
 @app.route("/generate_video", methods=["POST"])
 def generate_video():
